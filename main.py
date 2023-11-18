@@ -41,7 +41,7 @@ def save(database, path):
 
 def search(database, name):
     try:
-        return database[name]
+        return "Number: " + database[name]
     except:
         return "Contact not found"
 
@@ -51,11 +51,13 @@ def add(database, contact):
         print("Contact already existing")
         return
     database[contact[0]] = contact[1]
+    print("Contact added\n")
 
 
 def remove(database, name):
     try:
         database.pop(name)
+        print("Contact deleted\n")
     except:
         print("Contact not in database")
 
@@ -74,7 +76,7 @@ def main():
             continue
 
         if entry == "2":
-            name = input("Name:\n- ")
+            name = input("Name (0 to quit):\n- ")
             if name == "0":
                 entry = -1
                 continue
@@ -94,7 +96,7 @@ def main():
         if entry not in [-1, "0", "1", "2", "3"]:
             print("Please enter a valid option.")
 
-        print("1: search | 2: add | 3: remove | 0: quit")
+        print("0: quit | 1: search | 2: add | 3: remove")
         entry = input("- ")
 
 
